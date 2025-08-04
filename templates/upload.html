@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Subida de Documentos Políticos</title>
+</head>
+<body>
+    <h2>Subir Documento Político</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li style="color:red;">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" enctype="multipart/form-data">
+        <label>Archivo:</label>
+        <input type="file" name="file" required><br><br>
+
+        <label>Tipo de documento:</label>
+        <select name="tipo_doc" required>
+            <option value="">Seleccione...</option>
+            <option value="Plan de Gobierno">Plan de Gobierno</option>
+            <option value="Discurso Político">Discurso Político</option>
+        </select><br><br>
+
+        <label>Nombre del candidato:</label>
+        <input type="text" name="candidato" required><br><br>
+
+        <label>Fecha del documento:</label>
+        <input type="date" name="fecha_doc" required><br><br>
+
+        <label>Fuente (opcional):</label>
+        <input type="text" name="fuente"><br><br>
+
+        <button type="submit">Subir</button>
+    </form>
+</body>
+</html>
